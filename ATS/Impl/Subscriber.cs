@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATSCore
+namespace ATS.Impl
 {
-   public interface IRatePlan
+    class Subscriber
     {
-        decimal CallCoastPerSec { get; }
     }
 }

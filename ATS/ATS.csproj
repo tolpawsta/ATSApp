@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ats.cs" />
-    <Compile Include="Client.cs" />
+    <Compile Include="Impl\Client.cs" />
+    <Compile Include="Impl\NormaRatePlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

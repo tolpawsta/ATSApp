@@ -12,9 +12,11 @@ namespace ATS
         IList<string> phoneNumbers;
         Dictionary<IPortable, ITerminalable> portTerminalPairs;
         IList<ISubscriber> subscribers { get; set; }
+        IList<IRatePlan> ratePlans;
         public Ats()
         {
             subscribers = new List<ISubscriber>();
+            ratePlans = new List<IRatePlan>();
         }
         public ISubscriber Subscribe(IClientable client)
         {

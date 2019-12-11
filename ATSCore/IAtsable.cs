@@ -10,5 +10,6 @@ namespace ATSCore
     {
         //Dictionary<>
         ISubscriber Subscribe(IClientable client);
+
     }
 }

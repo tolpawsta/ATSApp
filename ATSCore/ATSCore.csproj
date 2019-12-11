@@ -45,7 +45,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="IAtsable.cs" />
     <Compile Include="IBillingable.cs" />
-    <Compile Include="Interface1.cs" />
+    <Compile Include="IRatePlan.cs" />
     <Compile Include="IPortable.cs" />
     <Compile Include="ISubscriber.cs" />
     <Compile Include="ITerminalable.cs" />
