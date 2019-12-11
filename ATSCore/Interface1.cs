@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-  public interface IAtsable
+    interface IRatePlanable
     {
-        //Dictionary<>
-        ISubscriber Subscribe(IClientable client);
+        decimal CallCoastPerSec { get; }
     }
 }

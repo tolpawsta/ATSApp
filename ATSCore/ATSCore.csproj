@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClientable.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="IAtsable.cs" />
     <Compile Include="IBillingable.cs" />
+    <Compile Include="Interface1.cs" />
     <Compile Include="IPortable.cs" />
+    <Compile Include="ISubscriber.cs" />
     <Compile Include="ITerminalable.cs" />
+    <Compile Include="PortState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

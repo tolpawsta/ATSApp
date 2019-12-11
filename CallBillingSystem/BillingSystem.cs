@@ -9,5 +9,7 @@ namespace CallBillingSystem
 {
     public class BillingSystem:IBillingable
     {
+        IEnumerable<ISubscriber> subscribers { get; }
+
     }
 }

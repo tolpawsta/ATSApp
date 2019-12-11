@@ -7,7 +7,18 @@ using System.Threading.Tasks;
 
 namespace ATS
 {
-    public class Ats:IAtsable
+    public class Ats : IAtsable
     {
+        IList<string> phoneNumbers;
+        Dictionary<IPortable, ITerminalable> portTerminalPairs;
+        IList<ISubscriber> subscribers { get; set; }
+        public Ats()
+        {
+            subscribers = new List<ISubscriber>();
+        }
+        public ISubscriber Subscribe(IClientable client)
+        {
+           
+        }
     }
 }

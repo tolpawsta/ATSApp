@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-  public interface IAtsable
+    public interface ISubscriber
     {
-        //Dictionary<>
-        ISubscriber Subscribe(IClientable client);
+        string FullName { get; }
+        string PhoneNumber { get; set; }
+
     }
 }

@@ -8,5 +8,9 @@ namespace ATSCore
 {
     public class IPortable
     {
+        event Action<string, string> onColl;
+        event Action<string, string> onReject;
+        PortState portState { get; set; }
+
     }
 }

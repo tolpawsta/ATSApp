@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATSCore\ATSCore.csproj">
+      <Project>{d491a339-1fe2-48f6-8423-b202770dfc92}</Project>
+      <Name>ATSCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ATS\ATS.csproj">
+      <Project>{a75c9513-a829-4601-a02b-7818fbeb4b57}</Project>
+      <Name>ATS</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
