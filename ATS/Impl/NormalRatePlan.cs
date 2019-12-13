@@ -7,11 +7,16 @@ using ATSCore;
 
 namespace ATS.Impl
 {
-    class NormaRatePlan : IRatePlan
+    public class NormalRatePlan : IRatePlan
     {
+        private const decimal  SimpleCoastPerSec= 100;
         public decimal CallCoastPerSec { get; }
 
-        public NormaRatePlan(decimal callCoastPerSec)
+        public NormalRatePlan()
+        {
+            CallCoastPerSec = SimpleCoastPerSec;
+        }
+        public NormalRatePlan(decimal callCoastPerSec)
         {
             CallCoastPerSec = callCoastPerSec;
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CallBillingSystem
+namespace BillingSystem
 {
-    public class BillingSystem:IBillingable
+    public class CallBillingSystem:IBilling
     {
         IEnumerable<ISubscriber> subscribers { get; }
 

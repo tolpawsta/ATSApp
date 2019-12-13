@@ -8,8 +8,9 @@ namespace ATSCore
 {
     public interface ITerminalable
     {
-
-        void Connect(IPortable port);
+        IPort Port { get; }
+        string PhoneNumber { get; }
+        void Connect(IPort port);
         void Call(string phoneNumber);
         void Reject();
         void Answer();

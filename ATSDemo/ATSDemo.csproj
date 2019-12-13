@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\DependencyManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +58,14 @@
     <ProjectReference Include="..\ATS\ATS.csproj">
       <Project>{a75c9513-a829-4601-a02b-7818fbeb4b57}</Project>
       <Name>ATS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CallBillingSystem\BillingSystem.csproj">
+      <Project>{f50e1996-0693-4879-a712-23f4252b56f3}</Project>
+      <Name>BillingSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminal\Terminal.csproj">
+      <Project>{c593b37e-1bd7-424f-8411-2f9c545bc7c5}</Project>
+      <Name>Terminal</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

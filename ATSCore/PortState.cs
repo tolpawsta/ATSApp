@@ -2,6 +2,7 @@
 {
     public enum PortState
     {
+        Connected,
         Disconnected,
         Busy
     }

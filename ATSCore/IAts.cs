@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-  public interface IAtsable
+  public interface IAts
     {
         //Dictionary<>
-        ISubscriber Subscribe(IClientable client);
+        ISubscriber ConcludeContractWith(IClientable client);
+        void TerminateContractWith(ISubscriber subscriber);
+        
 
     }
 }

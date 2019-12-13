@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ATS
 {
-    public class Ats : IAtsable
+    public class Ats : IAts
     {
         IList<string> phoneNumbers;
-        Dictionary<IPortable, ITerminalable> portTerminalPairs;
+        Dictionary<IPort, ITerminalable> portTerminalPairs;
         IList<ISubscriber> subscribers { get; set; }
         IList<IRatePlan> ratePlans;
         public Ats()
@@ -18,9 +18,9 @@ namespace ATS
             subscribers = new List<ISubscriber>();
             ratePlans = new List<IRatePlan>();
         }
-        public ISubscriber Subscribe(IClientable client)
+        public ISubscriber ConcludeContractWith(IClientable client)
         {
-           
+            subscribers.Add(client);
         }
     }
 }

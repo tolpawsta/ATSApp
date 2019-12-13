@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-    public interface IBillingable
+    public interface IBilling
     {
     }
 }

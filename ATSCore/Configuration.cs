@@ -8,10 +8,7 @@ namespace ATSCore
 {
     public static class Configuration
     {
-        public static IAtsable GetAts { get; }
-        public static IBillingable GetBilling { get; }
-        public static ITerminalable GetTerminal { get; }
-        public static IPortable GetPort { get; }
+        public static IDependancyManager GetManager { get;}
 
     }
 }

@@ -13,13 +13,14 @@ namespace ATSDemo
     {
         static void Main(string[] args)
         {
-            IAtsable ats = Configuration.GetAts;
-            IBillingable billingSystem = Configuration.GetBilling;
-            ITerminalable terminal = Configuration.GetTerminal;
-            IPortable port = Configuration.GetPort;
-            ISubscriber johnSmith= ats.Subscribe(new Client("John", "Smith"));
-            ats.Subscribe(new Client("Tomas", "Anderson"));
-            ats.Subscribe(new Client("Pifia", "Oracle"));
+            var manager = Configuration.GetManager;
+            IAts ats = manager.GetAts;
+            IBilling billingSystem = manager.GetBillingSystem;
+            ITerminalable terminal = manager.GetTerminal;
+            IPort port = manager.GetPort;
+            ISubscriber johnSmith= ats.ConcludeContractWith(new Client("John", "Smith"));
+            ats.ConcludeContractWith(new Client("Tomas", "Anderson"));
+            ats.ConcludeContractWith(new Client("Pifia", "Oracle"));
 
 
             //ats.Start();

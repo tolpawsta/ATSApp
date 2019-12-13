@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATSDemo", "ATSDemo\ATSDemo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATSCore", "ATSCore\ATSCore.csproj", "{D491A339-1FE2-48F6-8423-B202770DFC92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallBillingSystem", "CallBillingSystem\CallBillingSystem.csproj", "{F50E1996-0693-4879-A712-23F4252B56F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingSystem", "CallBillingSystem\BillingSystem.csproj", "{F50E1996-0693-4879-A712-23F4252B56F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATS", "ATS\ATS.csproj", "{A75C9513-A829-4601-A02B-7818FBEB4B57}"
 EndProject

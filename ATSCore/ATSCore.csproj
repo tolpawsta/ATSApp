@@ -43,10 +43,11 @@
   <ItemGroup>
     <Compile Include="IClientable.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="IAtsable.cs" />
-    <Compile Include="IBillingable.cs" />
+    <Compile Include="IAts.cs" />
+    <Compile Include="IBilling.cs" />
+    <Compile Include="IDependancyManager.cs" />
     <Compile Include="IRatePlan.cs" />
-    <Compile Include="IPortable.cs" />
+    <Compile Include="IPort.cs" />
     <Compile Include="ISubscriber.cs" />
     <Compile Include="ITerminalable.cs" />
     <Compile Include="PortState.cs" />
