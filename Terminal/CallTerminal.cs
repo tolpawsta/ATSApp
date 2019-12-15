@@ -1,4 +1,5 @@
 ﻿using ATSCore;
+using ATSCore.EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,37 +8,59 @@ using System.Threading.Tasks;
 
 namespace Terminal
 {
-    public class CallTerminal : ITerminalable
+    public class CallTerminal : ITerminal
     {
-        
-        public string PhoneNumber { get; }
-        public IPort Port { get; }
+
+        CallInfo _callInfo;
+        public IPort Port { get; set; }
+        public TerminalState State { get ; set; }
 
         public CallTerminal(string phoneNumber, IPort port)
         {
-            PhoneNumber = phoneNumber;
+            State = TerminalState.On;
             Port = port;
             Port.PortState = PortState.Connected;
         }
 
         public void Answer()
         {
-            throw new NotImplementedException();
+            _callInfo = Port.CurrentCallInfo;
+            _callInfo.CallDateTime = DateTime.Now;
         }
 
-        public void Call(string phoneNumber)
+        public void Call(int targetPhoneNumber)
         {
-            Port.Coll(PhoneNumber, phoneNumber, "OutCallTo");
+            Port.Coll(targetPhoneNumber);
         }
 
         public void Connect(IPort port)
         {
-            throw new NotImplementedException();
+            if (port.PhoneNumber!=Port.PhoneNumber)
+            {
+                Port = port;
+            }
+            Port.OnInComingCall += Port_InComingCall;
+            
+        }
+
+       
+        private void Port_InComingCall(CallInfo callInfo)
+        {
+            Console.WriteLine($"Incoming call ...{_callInfo.SourcePhoneNumber}");
         }
 
         public void Reject()
         {
-            throw new NotImplementedException();
+            if (_callInfo!=null)
+            {
+                _callInfo.CallDuration = _callInfo.LimitCallDuraction - new Random().Next((int)_callInfo.LimitCallDuraction);
+                Port.Reject(_callInfo);
+            }
+        }
+        public void Drop()
+        {
+            _callInfo.CallDuration = 0;
+            Port.Drop(_callInfo);
         }
     }
 }

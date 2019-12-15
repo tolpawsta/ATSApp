@@ -1,4 +1,4 @@
-﻿namespace ATSCore
+﻿namespace ATSCore.EntityStates
 {
     public enum PortState
     {

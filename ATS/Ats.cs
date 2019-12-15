@@ -9,18 +9,54 @@ namespace ATS
 {
     public class Ats : IAts
     {
-        IList<string> phoneNumbers;
-        Dictionary<IPort, ITerminalable> portTerminalPairs;
-        IList<ISubscriber> subscribers { get; set; }
-        IList<IRatePlan> ratePlans;
-        public Ats()
+        
+        ICollection<ITerminal> terminals;
+        ICollection<IPort> ports;
+        
+        IBilling _billingSystem;
+        public Ats(ICollection<ITerminal> terminals, ICollection<IPort> ports,IBilling billingSystem)
         {
-            subscribers = new List<ISubscriber>();
-            ratePlans = new List<IRatePlan>();
+            this.terminals = terminals;
+            this.ports = ports;
+            _billingSystem = billingSystem;
         }
+
         public ISubscriber ConcludeContractWith(IClientable client)
         {
-            subscribers.Add(client);
+            ISubscriber subscriber = client as ISubscriber;
+            _billingSystem.subscribers.Add(subscriber);
+            ITerminal terminal = terminals.FirstOrDefault();
+            terminals.Remove(terminal);
+            StartPortListen(terminal.Port);
+            subscriber.terminal = terminal;
+            return subscriber;
+        }
+        private void StartPortListen(IPort port)
+        {
+            port.OnCall += Port_OnCall;
+            port.OnDrop += Port_OnDrop;
+            port.OnReject += Port_OnReject;
+        }
+        private void StopPortListen(IPort port)
+        {
+            port.OnCall -= Port_OnCall;
+            port.OnDrop -= Port_OnDrop;
+            port.OnReject -= Port_OnReject;
+        }
+        private void Port_OnReject(CallInfo callInfo)
+        {
+            
+        }
+
+        private void Port_OnDrop(CallInfo callInfo)
+        {
+            
+        }
+
+        private void Port_OnCall(CallInfo callInfo)
+        {
+            var subsriber = _billingSystem.GetSubscriberBy(callInfo.SourcePhoneNumber);
+
         }
     }
 }

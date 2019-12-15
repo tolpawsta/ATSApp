@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-   public interface IRatePlan
+   public interface ITariffPlan
     {
         decimal CallCoastPerSec { get; }
     }

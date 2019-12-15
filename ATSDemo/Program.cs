@@ -16,7 +16,7 @@ namespace ATSDemo
             var manager = Configuration.GetManager;
             IAts ats = manager.GetAts;
             IBilling billingSystem = manager.GetBillingSystem;
-            ITerminalable terminal = manager.GetTerminal;
+            ITerminal terminal = manager.GetTerminal;
             IPort port = manager.GetPort;
             ISubscriber johnSmith= ats.ConcludeContractWith(new Client("John", "Smith"));
             ats.ConcludeContractWith(new Client("Tomas", "Anderson"));

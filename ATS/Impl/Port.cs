@@ -1,4 +1,5 @@
 ﻿using ATSCore;
+using ATSCore.EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +10,39 @@ namespace ATS.Impl
 {
     public class Port : IPort
     {
-        public event Action<string, string, string> onCall;
-        public event Action<string, string, string> onReject;
+        public event Action<CallInfo> OnCall;
+        public event Action<CallInfo> OnReject;
+        public event Action<CallInfo> OnInComingCall;
+        public event Action<CallInfo> OnDrop;
         public PortState PortState { get; set; }
-        public Port()
+        public int PhoneNumber { get; }
+        public CallInfo CurrentCallInfo { get; set; }
+
+        public Port(int phoneNumber)
         {
+            PhoneNumber = phoneNumber;
             PortState = PortState.Disconnected;
-            
         }
-
-        public void Coll(string outgoingPhoneNumber, string incomingPhoneNumber, string callInformation)
+        public void Coll(int targerPhoneNumber)
         {
-            
-                onCall?.Invoke(outgoingPhoneNumber, incomingPhoneNumber, callInformation);
-            
-            
+            CurrentCallInfo = new CallInfo(PhoneNumber, targerPhoneNumber);
+            OnCall?.Invoke(CurrentCallInfo);
         }
-
-        public void Reject(string outgoingPhoneNumber, string incomingPhoneNumber, string callInformation)
+        public void Reject(CallInfo callInfo)
         {
-            onReject?.Invoke(outgoingPhoneNumber, incomingPhoneNumber, callInformation);
+            OnReject?.Invoke(callInfo);
+        }
+        public void Drop(CallInfo callInfo)
+        {
+            OnDrop?.Invoke(callInfo);
+        }
+        public void ChangeState()
+        {
+            throw new NotImplementedException();
+        }
+        void InComingCall(CallInfo callInfo)
+        { CurrentCallInfo = callInfo;
+            OnInComingCall?.Invoke(CurrentCallInfo);
         }
     }
 }
