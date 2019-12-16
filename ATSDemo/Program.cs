@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ATS.Impl;
 using ATSCore.Interfaces;
+using BillingSystem.Impl;
 
 namespace ATSDemo
 {
@@ -30,11 +31,13 @@ namespace ATSDemo
                 manager.GetTerminal(),
                 manager.GetTerminal() };
             IBilling billingSystem = manager.GetBillingSystem();
-            billingSystem.Contracts.Add()
+            billingSystem.Contracts.AddRange(
+                new List<IContract>() { 
+                    contractA1, 
+                    contractLife, 
+                    contractMTS });
+
             IAts ats = manager.GetAts(terminals,ports,billingSystem);
-            
-            
-            
             ISubscriber johnSmith= ats.ConcludeContractWith(new Person("John", "Smith"));
            ISubscriber tomasAnderson=ats.ConcludeContractWith(new Person("Tomas", "Anderson"));
            ISubscriber pifiaOracle= ats.ConcludeContractWith(new Person("Pifia", "Oracle"));
