@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ATS.Impl;
 using ATSCore.Interfaces;
 using BillingSystem.Impl;
+using ATSDemo.Impl;
 
 namespace ATSDemo
 {
@@ -15,8 +16,8 @@ namespace ATSDemo
     {
         static void Main(string[] args)
         {
-            
-            var manager = Configuration.GetManager;
+
+            var manager = Configuration.GetManager(new DependencyManager());
             ITariffPlan tariffPlan = manager.GetTariffPlan(20);
             IContract contractA1 = manager.GetContract(tariffPlan,phoneNumber: 37544);
             IContract contractMTS = manager.GetContract(tariffPlan,phoneNumber: 37529);
@@ -30,8 +31,7 @@ namespace ATSDemo
                 manager.GetTerminal(), 
                 manager.GetTerminal(),
                 manager.GetTerminal() };
-            IBilling billingSystem = manager.GetBillingSystem();
-            billingSystem.Contracts.AddRange(
+            IBilling billingSystem = manager.GetBillingSystem(
                 new List<IContract>() { 
                     contractA1, 
                     contractLife, 
@@ -41,9 +41,8 @@ namespace ATSDemo
             ISubscriber johnSmith= ats.ConcludeContractWith(new Person("John", "Smith"));
            ISubscriber tomasAnderson=ats.ConcludeContractWith(new Person("Tomas", "Anderson"));
            ISubscriber pifiaOracle= ats.ConcludeContractWith(new Person("Pifia", "Oracle"));
-            ITerminal terminalJS = johnSmith.Terminal;
-            ITerminal terminalTA = tomasAnderson.Terminal;
-            ITerminal terminalPO = pifiaOracle.Terminal;
+
+            johnSmith.Call(37529);
 
 
             

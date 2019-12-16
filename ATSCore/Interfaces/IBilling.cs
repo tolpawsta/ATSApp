@@ -9,7 +9,8 @@ namespace ATSCore
 {
     public interface IBilling
     {
-        IList<ISubscriber> Subscribers { get; }
+        void AddSubscriber(ISubscriber subscriber);
+        IEnumerable<ISubscriber> Subscribers { get; }
         IList<IContract> Contracts { get; set; }
         ISubscriber GetSubscriberBy(int sourcePhoneNumber);
     }

@@ -21,7 +21,17 @@ namespace ATSCore
             SourcePhoneNumber = sourcePhoneNumber;
             TargetPhoneNumber = targetPhoneNumber;
         }
-
+        public override string ToString()
+        {
+            return new StringBuilder()
+                .AppendLine($"Source phone: {SourcePhoneNumber}")
+                .AppendLine($"Target phone: {TargetPhoneNumber}")
+                .AppendLine($"Date-time: {CallDateTime.ToString("mm/dd/yyyy")} - {CallDateTime.ToString("hh:mm")}")
+                .AppendLine($"Call duraction: {CallDuration}")
+                .AppendLine($"Call type: {callType}")
+                .ToString();
+                
+        }
 
     }
 }

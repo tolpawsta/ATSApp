@@ -28,7 +28,7 @@ namespace ATS
             if (!PortTerminalController.CheckFreePortTerminal(terminals, ports))
                 throw new NullReferenceException("Sorry, there is no free port or terminal.");
             ISubscriber subscriber = client as ISubscriber;
-            _billingSystem.Subscribers.Add(subscriber);
+            _billingSystem.AddSubscriber(subscriber);
             subscriber.Terminal = terminals.First();
             terminals.Remove(subscriber.Terminal);
             subscriber.Port = ports.First();

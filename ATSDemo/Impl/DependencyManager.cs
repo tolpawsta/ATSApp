@@ -6,20 +6,21 @@ using ATS.Impl;
 using ATSCore;
 using ATSCore.Interfaces;
 using BillingSystem.Impl;
+using BillingSystem;
 using Terminal;
 
 namespace ATSDemo.Impl
 {
     class DependencyManager : IDependancyManager
     {
-        public IAts GetAts(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem)
+        public IAts GetAts(IList<ITerminal> terminals, IList<IPort> ports, IBilling billingSystem)
         {
             return new Ats(terminals,ports,billingSystem);
         }
 
-        public IBilling GetBillingSystem()
+        public IBilling GetBillingSystem(IList<IContract> contracts)
         {
-            return new BillingSystem.CallBillingSystem();
+            return new CallBillingSystem(contracts);
         }
 
         public IContract GetContract(ITariffPlan tariffPlan, int phoneNumber)

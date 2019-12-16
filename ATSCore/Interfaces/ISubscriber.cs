@@ -11,7 +11,7 @@ namespace ATSCore
     public interface ISubscriber
     {
         int PhoneNumber { get; }
-        IContract Contract { get; }
+        IContract Contract { get; set; }
         ITerminal Terminal { get; set; }
         IPort Port { get; set; }
         string FullName { get; }

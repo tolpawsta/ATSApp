@@ -5,8 +5,8 @@ namespace ATSCore
 {
     public interface IDependancyManager
     {
-        IAts GetAts(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem);
-        IBilling GetBillingSystem();
+        IAts GetAts(IList<ITerminal> terminals, IList<IPort> ports, IBilling billingSystem);
+        IBilling GetBillingSystem(IList<IContract> contracts);
         IPort GetPort();
         IClient GetPerson(string firstName, string lastName);
         ITerminal GetTerminal();

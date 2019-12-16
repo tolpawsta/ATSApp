@@ -8,7 +8,7 @@ namespace ATSCore
 {
     public static class Configuration
     {
-        public static IDependancyManager GetManager { get;}
+        public static IDependancyManager GetManager(IDependancyManager manager) => manager;
 
     }
 }

@@ -8,7 +8,7 @@ namespace ATSCore.Interfaces
 {
     public interface IContract
     {
-        ISubscriber Subscriber { get; set}
+        ISubscriber Subscriber { get; set; }
         int PhoneNumber { get; }
         ITariffPlan TariffPlan { get; }
     }
