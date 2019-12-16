@@ -9,8 +9,9 @@ namespace ATSCore
         IBilling GetBillingSystem(IList<IContract> contracts);
         IPort GetPort();
         IClient GetPerson(string firstName, string lastName);
-        ITerminal GetTerminal();
+        ITerminal GetTerminal(IViewable view);
         IContract GetContract(ITariffPlan tariffPlan, int phoneNumber);
         ITariffPlan GetTariffPlan(decimal callCoastPerSecond);
+        IViewable GetView();
     }
 }

@@ -8,6 +8,7 @@ using ATSCore.Interfaces;
 using BillingSystem.Impl;
 using BillingSystem;
 using Terminal;
+using Terminal.Impl;
 
 namespace ATSDemo.Impl
 {
@@ -44,9 +45,14 @@ namespace ATSDemo.Impl
             return new SimpleTariffPlan(callCoastPerSecond);
         }
 
-        public ITerminal GetTerminal()
+        public ITerminal GetTerminal(IViewable view)
         {
-           return new CallTerminal();
+           return new CallTerminal(view);
+        }
+
+        public IViewable GetView()
+        {
+            return new TerminalDisplay();
         }
     }
 }

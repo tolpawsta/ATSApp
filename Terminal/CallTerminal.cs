@@ -1,5 +1,6 @@
 ﻿using ATSCore;
 using ATSCore.EntityStates;
+using ATSCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,15 @@ namespace Terminal
 {
     public class CallTerminal : ITerminal
     {
-
+        private IViewable _viewable;
         private CallInfo _callInfo;
 
         public IPort Port { get; set; }
         public TerminalState State { get; set; }
 
-        public CallTerminal()
+        public CallTerminal(IViewable view)
         {
-
+            _viewable = view;
         }
 
         public void Answer()
@@ -44,12 +45,12 @@ namespace Terminal
 
         private void Port_OnCallResponce(string message)
         {
-            Console.WriteLine(message);
+            _viewable.Show(message);
         }
 
         private void Port_InComingCall(CallInfo callInfo)
         {
-            Console.WriteLine($"Incoming call ...{_callInfo.SourcePhoneNumber}");
+            _viewable.Show($"Incoming call ...{_callInfo.SourcePhoneNumber}");
         }
 
         public void Reject()

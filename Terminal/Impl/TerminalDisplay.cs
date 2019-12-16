@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Terminal.Impl
 {
-    class TerminalDisplay : IViewable
+    public class TerminalDisplay : IViewable
     {
         public void Show(string message)
         {

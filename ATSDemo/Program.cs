@@ -22,15 +22,15 @@ namespace ATSDemo
             IContract contractA1 = manager.GetContract(tariffPlan,phoneNumber: 37544);
             IContract contractMTS = manager.GetContract(tariffPlan,phoneNumber: 37529);
             IContract contractLife = manager.GetContract(tariffPlan,phoneNumber: 37525);
-
+            IViewable view = manager.GetView();
             IList<IPort> ports = new List<IPort>() { 
                 manager.GetPort(),
                 manager.GetPort(),
                 manager.GetPort()};
             IList<ITerminal> terminals = new List<ITerminal>() { 
-                manager.GetTerminal(), 
-                manager.GetTerminal(),
-                manager.GetTerminal() };
+                manager.GetTerminal(view), 
+                manager.GetTerminal(view),
+                manager.GetTerminal(view) };
             IBilling billingSystem = manager.GetBillingSystem(
                 new List<IContract>() { 
                     contractA1, 
@@ -41,11 +41,17 @@ namespace ATSDemo
             ISubscriber johnSmith= ats.ConcludeContractWith(new Person("John", "Smith"));
            ISubscriber tomasAnderson=ats.ConcludeContractWith(new Person("Tomas", "Anderson"));
            ISubscriber pifiaOracle= ats.ConcludeContractWith(new Person("Pifia", "Oracle"));
-
+            // not enough funds in the account
+            johnSmith.Call(37529);
+            johnSmith.AccountMoney = 10m;
+            //on target number not enough funds in the account
+            johnSmith.Call(37529);
+            tomasAnderson.AccountMoney = 10m;
+            pifiaOracle.AccountMoney = 10m;
             johnSmith.Call(37529);
 
 
-            
+
 
         }
     }
