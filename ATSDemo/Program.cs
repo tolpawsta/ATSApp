@@ -20,15 +20,17 @@ namespace ATSDemo
             IContract contractA1 = manager.GetContract(tariffPlan,phoneNumber: 37544);
             IContract contractMTS = manager.GetContract(tariffPlan,phoneNumber: 37529);
             IContract contractLife = manager.GetContract(tariffPlan,phoneNumber: 37525);
-           
-            
-           
-            IList<IPort> ports = new List<IPort>() { port1, port2,port3};
-            ITerminal terminal1 = manager.GetTerminal(port1);
-            ITerminal terminal2 = manager.GetTerminal(port2);
-            ITerminal terminal3 = manager.GetTerminal(port3);
-            IList<ITerminal> terminals = new List<ITerminal>() { terminal1, terminal2,terminal3 };
+
+            IList<IPort> ports = new List<IPort>() { 
+                manager.GetPort(),
+                manager.GetPort(),
+                manager.GetPort()};
+            IList<ITerminal> terminals = new List<ITerminal>() { 
+                manager.GetTerminal(), 
+                manager.GetTerminal(),
+                manager.GetTerminal() };
             IBilling billingSystem = manager.GetBillingSystem();
+            billingSystem.Contracts.Add()
             IAts ats = manager.GetAts(terminals,ports,billingSystem);
             
             

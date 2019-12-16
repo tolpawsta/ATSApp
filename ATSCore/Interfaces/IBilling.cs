@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATSCore.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace ATSCore
 {
     public interface IBilling
     {
-        IList<ISubscriber> subscribers { get; }
-
+        IList<ISubscriber> Subscribers { get; }
+        IList<IContract> Contracts { get; set; }
         ISubscriber GetSubscriberBy(int sourcePhoneNumber);
     }
 }

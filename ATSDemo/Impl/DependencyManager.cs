@@ -32,24 +32,20 @@ namespace ATSDemo.Impl
             return new Person(firstName, lastName);
         }
 
-        public IPort GetPort(int phoneNumber)
+        public IPort GetPort()
         {
-            return new Port(phoneNumber);
+            return new Port();
         }
 
-        public ITariffPlan GetRatePlan(decimal callCoastPerSec)
-        {
-           return new SimpleTariffPlan(callCoastPerSec);
-        }
-
+        
         public ITariffPlan GetTariffPlan(decimal callCoastPerSecond)
         {
             return new SimpleTariffPlan(callCoastPerSecond);
         }
 
-        public ITerminal GetTerminal(IPort port)
+        public ITerminal GetTerminal()
         {
-           return new CallTerminal(port);
+           return new CallTerminal();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace ATS.Impl
         public event Action<CallInfo> OnReject;
         public event Action<CallInfo> OnInComingCall;
         public event Action<CallInfo> OnDrop;
+        public event Action<string> OnCallResponce;
+
         public PortState PortState { get; set; }
         public int PhoneNumber { get; set; }
         public CallInfo CurrentCallInfo { get; set; }
@@ -40,9 +42,14 @@ namespace ATS.Impl
         {
             throw new NotImplementedException();
         }
-        void InComingCall(CallInfo callInfo)
+       public void InComingCall(CallInfo callInfo)
         { CurrentCallInfo = callInfo;
             OnInComingCall?.Invoke(CurrentCallInfo);
+        }
+
+        public void CallResponce(string message)
+        {
+            OnCallResponce?.Invoke(message);
         }
     }
 }

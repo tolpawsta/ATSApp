@@ -26,9 +26,7 @@ namespace ATS.Impl
         public IPort Port { get => _port; set { _port = value; _port.PhoneNumber = Contract.PhoneNumber; } }
         public ITariffPlan TariffPlan { get => _tariffPlan; set { _tariffPlan = Contract.TariffPlan; } }
         public SubscriberState subscriberState { get; set; }
-
         public IEnumerable<CallInfo> GetAllCalls => _calls;
-
         public decimal AccountMoney
         {
             get => _accountMoney;
@@ -41,9 +39,6 @@ namespace ATS.Impl
                 }
             }
         }
-
-
-
         public Person()
         {
             _calls = new List<CallInfo>();

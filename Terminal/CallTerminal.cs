@@ -10,16 +10,15 @@ namespace Terminal
 {
     public class CallTerminal : ITerminal
     {
-
-        CallInfo _callInfo;
+        
+        private CallInfo _callInfo;
+        
         public IPort Port { get; set; }
         public TerminalState State { get ; set; }
 
-        public CallTerminal(IPort port)
+        public CallTerminal()
         {
-            State = TerminalState.On;
-            Port = port;
-            Port.PortState = PortState.Connected;
+           
         }
 
         public void Answer()
@@ -38,6 +37,10 @@ namespace Terminal
             if (port.PhoneNumber!=Port.PhoneNumber)
             {
                 Port = port;
+
+                State = TerminalState.On;
+                Port = port;
+                Port.PortState = PortState.Connected;
             }
             Port.OnInComingCall += Port_InComingCall;
             

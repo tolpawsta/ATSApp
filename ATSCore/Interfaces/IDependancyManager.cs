@@ -7,10 +7,9 @@ namespace ATSCore
     {
         IAts GetAts(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem);
         IBilling GetBillingSystem();
-        IPort GetPort(int phoneNumber);
+        IPort GetPort();
         IClient GetPerson(string firstName, string lastName);
-        ITerminal GetTerminal(IPort port);
-        ITariffPlan GetRatePlan(decimal callCoastPerSec);
+        ITerminal GetTerminal();
         IContract GetContract(ITariffPlan tariffPlan, int phoneNumber);
         ITariffPlan GetTariffPlan(decimal callCoastPerSecond);
     }
