@@ -39,7 +39,12 @@ namespace ATSDemo.Impl
 
         public ITariffPlan GetRatePlan(decimal callCoastPerSec)
         {
-           return new NormalRatePlan(callCoastPerSec);
+           return new SimpleTariffPlan(callCoastPerSec);
+        }
+
+        public ITariffPlan GetTariffPlan()
+        {
+            return new 
         }
 
         public ITerminal GetTerminal(IPort port)
