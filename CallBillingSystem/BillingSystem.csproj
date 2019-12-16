@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="CallBillingSystem.cs" />
     <Compile Include="Impl\Contract.cs" />
-    <Compile Include="Impl\NormalRatePlan.cs" />
+    <Compile Include="Impl\SimpleTariffPlan.cs" />
     <Compile Include="Impl\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

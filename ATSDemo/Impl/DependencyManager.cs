@@ -42,9 +42,9 @@ namespace ATSDemo.Impl
            return new SimpleTariffPlan(callCoastPerSec);
         }
 
-        public ITariffPlan GetTariffPlan()
+        public ITariffPlan GetTariffPlan(decimal callCoastPerSecond)
         {
-            return new 
+            return new SimpleTariffPlan(callCoastPerSecond);
         }
 
         public ITerminal GetTerminal(IPort port)

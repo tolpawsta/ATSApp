@@ -1,4 +1,5 @@
 ﻿using ATSCore.EntityStates;
+using ATSCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace ATSCore
 {
     public interface ISubscriber
     {
+        IContract Contract { get; }
         ITerminal Terminal { get; set; }
+        IPort Port { get; set; }
         string FullName { get; }
         ITariffPlan TariffPlan { get; set; }
         SubscriberState subscriberState { get; set; }

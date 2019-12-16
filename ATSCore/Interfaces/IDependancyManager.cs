@@ -12,5 +12,6 @@ namespace ATSCore
         ITerminal GetTerminal(IPort port);
         ITariffPlan GetRatePlan(decimal callCoastPerSec);
         IContract GetContract(ITariffPlan tariffPlan, int phoneNumber);
+        ITariffPlan GetTariffPlan(decimal callCoastPerSecond);
     }
 }

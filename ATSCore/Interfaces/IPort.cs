@@ -9,7 +9,7 @@ namespace ATSCore
 {
     public interface IPort
     {
-        int PhoneNumber { get; }
+        int PhoneNumber { get; set; }
         CallInfo CurrentCallInfo { get; set; }
         event Action<CallInfo> OnCall;
         event Action<CallInfo> OnReject;

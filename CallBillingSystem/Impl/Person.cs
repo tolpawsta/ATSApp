@@ -1,5 +1,6 @@
 ﻿using ATSCore;
 using ATSCore.EntityStates;
+using ATSCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace ATS.Impl
     {
         private decimal _accountMoney;
         private IList<CallInfo> _calls;
+        private IPort _port;
+        private ITariffPlan _tariffPlan;
+        public IContract Contract { get; }
         public string FirstName { get; }
 
         public string LastName { get; }
@@ -19,23 +23,26 @@ namespace ATS.Impl
         public string FullName => new StringBuilder().Append(FirstName).Append(" ").Append(LastName).ToString();
 
         public ITerminal Terminal { get; set; }
-        public ITariffPlan TariffPlan { get; set; }
+        public IPort Port { get => _port; set { _port = value; _port.PhoneNumber = Contract.PhoneNumber; } }
+        public ITariffPlan TariffPlan { get => _tariffPlan; set { _tariffPlan = Contract.TariffPlan; } }
         public SubscriberState subscriberState { get; set; }
 
         public IEnumerable<CallInfo> GetAllCalls => _calls;
 
         public decimal AccountMoney
         {
-            get => _accountMoney; 
+            get => _accountMoney;
             set
             {
                 _accountMoney = value;
-                if (_accountMoney<0)
+                if (_accountMoney < 0)
                 {
                     _accountMoney = 0;
                 }
             }
         }
+
+
 
         public Person()
         {

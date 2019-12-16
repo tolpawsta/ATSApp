@@ -15,12 +15,12 @@ namespace ATS.Impl
         public event Action<CallInfo> OnInComingCall;
         public event Action<CallInfo> OnDrop;
         public PortState PortState { get; set; }
-        public int PhoneNumber { get; }
+        public int PhoneNumber { get; set; }
         public CallInfo CurrentCallInfo { get; set; }
 
-        public Port(int phoneNumber)
+        public Port()
         {
-            PhoneNumber = phoneNumber;
+            
             PortState = PortState.Disconnected;
         }
         public void Coll(int targerPhoneNumber)
