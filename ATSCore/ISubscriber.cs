@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-  public interface IAts
+    public interface ISubscriber
     {
-        //Dictionary<>
-        ISubscriber ConcludeContractWith(IClientable client);
-        
-        
+        string FullName { get; }
+        string PhoneNumber { get; set; }
 
     }
 }

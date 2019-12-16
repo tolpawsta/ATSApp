@@ -8,6 +8,5 @@ namespace ATSCore
 {
     public interface IBilling
     {
-        ICollection<ISubscriber> subscribers { get; }
     }
 }

@@ -16,8 +16,8 @@ namespace ATSDemo.Impl
 
         public ISubscriber GetSubscriber => new Subscriber();
 
-        public ITariffPlan GetRatePlan => new NormalRatePlan();
+        public IRatePlan GetRatePlan => new NormalRatePlan();
 
-        public ITerminal GetTerminal => new CallTerminal(phoneNumber:"+123456789");
+        public ITerminalable GetTerminal => new CallTerminal(phoneNumber:"+123456789");
     }
 }

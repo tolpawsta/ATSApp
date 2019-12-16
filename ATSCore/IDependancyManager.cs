@@ -6,7 +6,7 @@
         IBilling GetBillingSystem { get; }
         IPort GetPort { get; }
         ISubscriber GetSubscriber { get; }
-        ITariffPlan GetRatePlan { get; }
-        ITerminal GetTerminal { get; }
+        IRatePlan GetRatePlan { get; }
+        ITerminalable GetTerminal { get; }
     }
 }

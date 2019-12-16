@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BillingSystem
 {
-    public class CallBillingSystem : IBilling
+    public class CallBillingSystem:IBilling
     {
-        public ICollection<ISubscriber> subscribers { get; }
+        IEnumerable<ISubscriber> subscribers { get; }
 
     }
 }

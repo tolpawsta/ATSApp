@@ -1,5 +1,4 @@
-﻿using ATSCore.EntityStates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace ATSCore
 {
-    public interface ITerminal
+    public interface ITerminalable
     {
-        TerminalState State { get; set; }
-        IPort Port { get; set; }
+        IPort Port { get; }
+        string PhoneNumber { get; }
         void Connect(IPort port);
-        void Call(int phoneNumber);
+        void Call(string phoneNumber);
         void Reject();
         void Answer();
-        void Drop();
     }
-
-    
 }

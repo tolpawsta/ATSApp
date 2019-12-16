@@ -41,18 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallInfo.cs" />
-    <Compile Include="Interfaces\IClientable.cs" />
-    <Compile Include="Interfaces\Configuration.cs" />
-    <Compile Include="Interfaces\IAts.cs" />
-    <Compile Include="Interfaces\IBilling.cs" />
-    <Compile Include="Interfaces\IDependancyManager.cs" />
-    <Compile Include="Interfaces\ITariffPlan.cs" />
-    <Compile Include="Interfaces\IPort.cs" />
-    <Compile Include="Interfaces\ISubscriber.cs" />
-    <Compile Include="Interfaces\ITerminal.cs" />
-    <Compile Include="EntityStates\TerminalState.cs" />
-    <Compile Include="EntityStates\PortState.cs" />
+    <Compile Include="IClientable.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="IAts.cs" />
+    <Compile Include="IBilling.cs" />
+    <Compile Include="IDependancyManager.cs" />
+    <Compile Include="IRatePlan.cs" />
+    <Compile Include="IPort.cs" />
+    <Compile Include="ISubscriber.cs" />
+    <Compile Include="ITerminalable.cs" />
+    <Compile Include="PortState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

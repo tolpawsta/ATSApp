@@ -1,5 +1,4 @@
 ﻿using ATSCore;
-using ATSCore.EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,59 +7,37 @@ using System.Threading.Tasks;
 
 namespace Terminal
 {
-    public class CallTerminal : ITerminal
+    public class CallTerminal : ITerminalable
     {
-
-        CallInfo _callInfo;
-        public IPort Port { get; set; }
-        public TerminalState State { get ; set; }
+        
+        public string PhoneNumber { get; }
+        public IPort Port { get; }
 
         public CallTerminal(string phoneNumber, IPort port)
         {
-            State = TerminalState.On;
+            PhoneNumber = phoneNumber;
             Port = port;
             Port.PortState = PortState.Connected;
         }
 
         public void Answer()
         {
-            _callInfo = Port.CurrentCallInfo;
-            _callInfo.CallDateTime = DateTime.Now;
+            throw new NotImplementedException();
         }
 
-        public void Call(int targetPhoneNumber)
+        public void Call(string phoneNumber)
         {
-            Port.Coll(targetPhoneNumber);
+            Port.Coll(PhoneNumber, phoneNumber, "OutCallTo");
         }
 
         public void Connect(IPort port)
         {
-            if (port.PhoneNumber!=Port.PhoneNumber)
-            {
-                Port = port;
-            }
-            Port.OnInComingCall += Port_InComingCall;
-            
-        }
-
-       
-        private void Port_InComingCall(CallInfo callInfo)
-        {
-            Console.WriteLine($"Incoming call ...{_callInfo.SourcePhoneNumber}");
+            throw new NotImplementedException();
         }
 
         public void Reject()
         {
-            if (_callInfo!=null)
-            {
-                _callInfo.CallDuration = _callInfo.LimitCallDuraction - new Random().Next((int)_callInfo.LimitCallDuraction);
-                Port.Reject(_callInfo);
-            }
-        }
-        public void Drop()
-        {
-            _callInfo.CallDuration = 0;
-            Port.Drop(_callInfo);
+            throw new NotImplementedException();
         }
     }
 }
