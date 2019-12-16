@@ -16,11 +16,11 @@ namespace ATSDemo
             var manager = Configuration.GetManager;
             IAts ats = manager.GetAts;
             IBilling billingSystem = manager.GetBillingSystem;
-            ITerminalable terminal = manager.GetTerminal;
+            ITerminal terminal = manager.GetTerminal;
             IPort port = manager.GetPort;
-            ISubscriber johnSmith= ats.ConcludeContractWith(new Client("John", "Smith"));
-            ats.ConcludeContractWith(new Client("Tomas", "Anderson"));
-            ats.ConcludeContractWith(new Client("Pifia", "Oracle"));
+            ISubscriber johnSmith= ats.ConcludeContractWith(new Person("John", "Smith"));
+            ats.ConcludeContractWith(new Person("Tomas", "Anderson"));
+            ats.ConcludeContractWith(new Person("Pifia", "Oracle"));
 
 
             //ats.Start();
