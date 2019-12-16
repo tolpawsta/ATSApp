@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+
 using ATS;
 
 using ATS.Impl;
 using ATSCore;
+using ATSCore.Interfaces;
+using BillingSystem.Impl;
 using Terminal;
 
 namespace ATSDemo.Impl
@@ -17,6 +20,11 @@ namespace ATSDemo.Impl
         public IBilling GetBillingSystem()
         {
             return new BillingSystem.CallBillingSystem();
+        }
+
+        public IContract GetContract(ITariffPlan tariffPlan, int phoneNumber)
+        {
+            return new Contract(tariffPlan, phoneNumber);
         }
 
         public IClient GetPerson(string firstName, string lastName)

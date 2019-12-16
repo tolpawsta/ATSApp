@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ATSCore.Interfaces;
+using System.Collections.Generic;
 
 namespace ATSCore
 {
@@ -10,5 +11,6 @@ namespace ATSCore
         IClient GetPerson(string firstName, string lastName);
         ITerminal GetTerminal(IPort port);
         ITariffPlan GetRatePlan(decimal callCoastPerSec);
+        IContract GetContract(ITariffPlan tariffPlan, int phoneNumber);
     }
 }
