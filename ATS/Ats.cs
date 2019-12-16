@@ -1,4 +1,5 @@
-﻿using ATSCore;
+﻿using ATS.Impl;
+using ATSCore;
 using ATSCore.EntityStates;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace ATS
     public class Ats : IAts
     {
 
-        ICollection<ITerminal> terminals;
-        ICollection<IPort> ports;
+        IList<ITerminal> terminals;
+        IList<IPort> ports;
 
         IBilling _billingSystem;
-        public Ats(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem)
+        public Ats(IList<ITerminal> terminals, IList<IPort> ports, IBilling billingSystem)
         {
             this.terminals = terminals;
             this.ports = ports;
@@ -24,12 +25,15 @@ namespace ATS
 
         public ISubscriber ConcludeContractWith(IClient client)
         {
+            if (!PortTerminalController.CheckFreePortTerminal(terminals, ports))
+                throw new NullReferenceException("Sorry, there is no free port or terminal.");
             ISubscriber subscriber = client as ISubscriber;
-            _billingSystem.subscribers.Add(subscriber);
-            ITerminal terminal = terminals.FirstOrDefault();
-            terminals.Remove(terminal);
-            StartPortListen(terminal.Port);
-            subscriber.Terminal = terminal;
+            _billingSystem.Subscribers.Add(subscriber);
+            subscriber.Terminal = terminals.First();
+            terminals.Remove(subscriber.Terminal);
+            subscriber.Port = ports.First();
+            ports.Remove(subscriber.Port);
+            StartPortListen(subscriber.Port);
             return subscriber;
         }
         private void StartPortListen(IPort port)
@@ -66,12 +70,12 @@ namespace ATS
                 throw new NullReferenceException($"Subscriber with phoneNumber {callInfo.TargetPhoneNumber} not found!");
             if (subscriber.subscriberState == SubscriberState.Blocked)
             {
-                subscriber.Terminal.Port.CallResponce("Your phone number is bloked.");
+                subscriber.Port.CallResponce("Your phone number is bloked.");
                 return;
             }
             if (targetSubscriber.subscriberState == SubscriberState.Blocked)
             {
-                subscriber.Terminal.Port.CallResponce("The subscriber you are calling is temporarily blocked.");
+                subscriber.Port.CallResponce("The subscriber you are calling is temporarily blocked.");
                 return;
             }
             IPort targetPort = targetSubscriber.Terminal.Port;

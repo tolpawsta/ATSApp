@@ -15,6 +15,7 @@ namespace ATS.Impl
         private IList<CallInfo> _calls;
         private IPort _port;
         private ITariffPlan _tariffPlan;
+        public int PhoneNumber => Contract.PhoneNumber;
         public IContract Contract { get; }
         public string FirstName { get; }
 
@@ -39,6 +40,9 @@ namespace ATS.Impl
                 }
             }
         }
+
+        
+
         public Person()
         {
             _calls = new List<CallInfo>();

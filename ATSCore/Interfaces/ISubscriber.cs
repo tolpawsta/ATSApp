@@ -10,6 +10,7 @@ namespace ATSCore
 {
     public interface ISubscriber
     {
+        int PhoneNumber { get; }
         IContract Contract { get; }
         ITerminal Terminal { get; set; }
         IPort Port { get; set; }
