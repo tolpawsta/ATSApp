@@ -17,7 +17,11 @@ namespace ATSCore
         IEnumerable<CallInfo> GetCallsBy(CallType callType);
         IEnumerable<CallInfo> GetCallsBy(int phoneNumber);
         decimal AccountMoney { get; set; }
-        
+        void Call(int phoneNumber);
+        void Reject();
+        void Answer();
+        void Drop();
+
 
 
     }

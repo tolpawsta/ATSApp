@@ -43,9 +43,6 @@
   <ItemGroup>
     <Compile Include="Ats.cs" />
     <Compile Include="Impl\CallController.cs" />
-    <Compile Include="Impl\Person.cs" />
-    <Compile Include="Impl\NormalRatePlan.cs" />
-    <Compile Include="Impl\Subscriber.cs" />
     <Compile Include="Impl\Port.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

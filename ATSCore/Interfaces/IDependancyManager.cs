@@ -1,12 +1,14 @@
-﻿namespace ATSCore
+﻿using System.Collections.Generic;
+
+namespace ATSCore
 {
     public interface IDependancyManager
     {
-        IAts GetAts { get; }
-        IBilling GetBillingSystem { get; }
-        IPort GetPort { get; }
-        ISubscriber GetSubscriber { get; }
-        ITariffPlan GetRatePlan { get; }
-        ITerminal GetTerminal { get; }
+        IAts GetAts(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem);
+        IBilling GetBillingSystem();
+        IPort GetPort(int phoneNumber);
+        IClient GetPerson(string firstName, string lastName);
+        ITerminal GetTerminal(IPort port);
+        ITariffPlan GetRatePlan(decimal callCoastPerSec);
     }
 }

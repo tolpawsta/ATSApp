@@ -15,7 +15,7 @@ namespace Terminal
         public IPort Port { get; set; }
         public TerminalState State { get ; set; }
 
-        public CallTerminal(string phoneNumber, IPort port)
+        public CallTerminal(IPort port)
         {
             State = TerminalState.On;
             Port = port;

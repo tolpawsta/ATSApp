@@ -1,23 +1,42 @@
-﻿using ATS;
+﻿using System.Collections.Generic;
+using ATS;
+
 using ATS.Impl;
 using ATSCore;
-using BillingSystem;
 using Terminal;
 
 namespace ATSDemo.Impl
 {
     class DependencyManager : IDependancyManager
     {
-        public IAts GetAts => new Ats();
+        public IAts GetAts(ICollection<ITerminal> terminals, ICollection<IPort> ports, IBilling billingSystem)
+        {
+            return new Ats(terminals,ports,billingSystem);
+        }
 
-        public IBilling GetBillingSystem => new CallBillingSystem();
+        public IBilling GetBillingSystem()
+        {
+            return new BillingSystem.CallBillingSystem();
+        }
 
-        public IPort GetPort => new Port();
+        public IClient GetPerson(string firstName, string lastName)
+        {
+            return new Person(firstName, lastName);
+        }
 
-        public ISubscriber GetSubscriber => new Subscriber();
+        public IPort GetPort(int phoneNumber)
+        {
+            return new Port(phoneNumber);
+        }
 
-        public ITariffPlan GetRatePlan => new NormalRatePlan();
+        public ITariffPlan GetRatePlan(decimal callCoastPerSec)
+        {
+           return new NormalRatePlan(callCoastPerSec);
+        }
 
-        public ITerminal GetTerminal => new CallTerminal(phoneNumber:"+123456789");
+        public ITerminal GetTerminal(IPort port)
+        {
+           return new CallTerminal(port);
+        }
     }
 }

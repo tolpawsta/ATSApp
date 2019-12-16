@@ -47,6 +47,7 @@
     <Compile Include="Interfaces\Configuration.cs" />
     <Compile Include="Interfaces\IAts.cs" />
     <Compile Include="Interfaces\IBilling.cs" />
+    <Compile Include="Interfaces\IContract.cs" />
     <Compile Include="Interfaces\IDependancyManager.cs" />
     <Compile Include="Interfaces\ITariffPlan.cs" />
     <Compile Include="Interfaces\IPort.cs" />
