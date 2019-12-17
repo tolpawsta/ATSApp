@@ -10,6 +10,8 @@ namespace ATSCore.Interfaces
     {
         void Show(string message);
         void Show(IEnumerable<CallInfo> calls);
+        void Show(ISubscriber subscriber);
         void Show(IEnumerable<ISubscriber> subscribers);
+        void Stop();
     }
 }

@@ -51,13 +51,12 @@ namespace ATS
         }
         private void Port_OnReject(CallInfo callInfo)
         {
-            _billingSystem.CommitCall(callInfo);
-
+            CallController.CallCommit(callInfo, _billingSystem);
         }
 
         private void Port_OnDrop(CallInfo callInfo)
         {
-
+            CallController.CallCommit(callInfo, _billingSystem);
         }
 
         private void Port_OnCall(CallInfo callInfo)
@@ -78,13 +77,14 @@ namespace ATS
                 subscriber.Port.CallResponce("The subscriber you are calling is temporarily blocked.");
                 return;
             }
-            if (CallController.CheckStatePortsSubscribers(subscriber,targetSubscriber))
+            if (CallController.CheckStatePortsSubscribers(subscriber, targetSubscriber))
             {
                 callInfo.LimitCallDuraction = _billingSystem.GetLimitCallDuraction(subscriber);
                 targetSubscriber.Port.InComingCall(callInfo);
             }
-            
+
 
         }
+
     }
 }

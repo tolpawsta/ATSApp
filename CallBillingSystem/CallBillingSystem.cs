@@ -54,5 +54,16 @@ namespace BillingSystem
             callInfo.callType = CallType.InComing;
             targetSubscriber.CommitCall(callInfo);
         }
+
+        public IEnumerable<CallInfo> GetAllCallFrom(ISubscriber subscriber)
+        {
+
+           return subscriber.GetAllCalls.OrderBy(c => c.CallDuration);
+        }
+
+        public IEnumerable<CallInfo> GetAllSubscriberInComingCalls(ISubscriber subscriber)
+        {
+            return subscriber.GetCallsBy(CallType.InComing);
+        }
     }
 }

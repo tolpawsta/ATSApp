@@ -33,5 +33,13 @@ namespace ATSCore.Controllers
             }
             return isPortFree;
         }
+        public static void CallCommit(CallInfo callInfo,IBilling billing)
+        {
+            billing.CommitCall(callInfo);
+            ISubscriber subscriber = billing.GetSubscriberBy(callInfo.SourcePhoneNumber);
+            ISubscriber targetSubscriber = billing.GetSubscriberBy(callInfo.TargetPhoneNumber);
+            subscriber.Port.State = PortState.Free;
+            targetSubscriber.Port.State = PortState.Free;
+        }
     }
 }

@@ -24,5 +24,14 @@ namespace Terminal.Impl
         {
             subscribers.ToList().ForEach(Console.WriteLine);
         }
+
+        public void Show(ISubscriber subscriber)
+        {
+            Console.WriteLine(subscriber.FullName);
+        }
+       public void Stop()
+        {
+            Console.ReadLine();
+        }
     }
 }
