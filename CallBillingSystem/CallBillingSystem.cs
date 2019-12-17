@@ -35,7 +35,7 @@ namespace BillingSystem
 
         public void AddSubscriber(ISubscriber subscriber)
         {
-            subscriber.Contract = Contracts.FirstOrDefault();
+            subscriber.SetContact(Contracts.FirstOrDefault());
             Contracts.Remove(subscriber.Contract);
             _subscribers.Add(subscriber);
         }
@@ -55,7 +55,7 @@ namespace BillingSystem
             targetSubscriber.CommitCall(callInfo);
         }
 
-        public IEnumerable<CallInfo> GetAllCallFrom(ISubscriber subscriber)
+        public IEnumerable<CallInfo> GetAllCallsOrderedByDuraction(ISubscriber subscriber)
         {
 
            return subscriber.GetAllCalls.OrderBy(c => c.CallDuration);

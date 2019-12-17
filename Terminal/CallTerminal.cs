@@ -34,6 +34,7 @@ namespace Terminal
         public void Call(int targetPhoneNumber)
         {
             Port.Coll(targetPhoneNumber);
+            _callInfo = Port.CurrentCallInfo;
         }
 
         public void Connect(IPort port)

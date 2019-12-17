@@ -14,6 +14,7 @@ namespace ATSCore
         public DateTime CallDateTime { get; set; }
         public double CallDuration { get; set; }
         public double LimitCallDuraction { get; set; }
+        public decimal Coast { get; set; }
         public CallType callType { get; set; }
 
         public CallInfo(int sourcePhoneNumber, int targetPhoneNumber)
@@ -28,7 +29,8 @@ namespace ATSCore
                 .AppendLine($"Target phone: {TargetPhoneNumber} ")
                 .AppendLine($"Date-time: {CallDateTime.ToString("d")} - {CallDateTime.ToString("t")}")
                 .AppendLine($"Call duraction: {CallDuration} ")
-                .AppendLine($"Call type: {callType}")
+                .AppendLine($"Call type: {callType} ")
+                .AppendLine($"Coast: {Coast}")
                 .ToString();
                 
         }

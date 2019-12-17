@@ -27,7 +27,7 @@ namespace Terminal.Impl
 
         public void Show(ISubscriber subscriber)
         {
-            Console.WriteLine(subscriber.FullName);
+            Console.WriteLine(subscriber?.FullName);
         }
        public void Stop()
         {

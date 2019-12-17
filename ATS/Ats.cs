@@ -51,12 +51,21 @@ namespace ATS
         }
         private void Port_OnReject(CallInfo callInfo)
         {
+            ISubscriber subscriber = _billingSystem.GetSubscriberBy(callInfo.SourcePhoneNumber);
+            ISubscriber targetSubscriber = _billingSystem.GetSubscriberBy(callInfo.TargetPhoneNumber);
+            subscriber.Port.CallResponce($"{subscriber.FullName}: call rejected with {targetSubscriber.FullName}");
+            targetSubscriber.Port.CallResponce($"{targetSubscriber.FullName}: call rejected with {subscriber.FullName}");
             CallController.CallCommit(callInfo, _billingSystem);
+            
         }
 
         private void Port_OnDrop(CallInfo callInfo)
         {
+            ISubscriber subscriber = _billingSystem.GetSubscriberBy(callInfo.SourcePhoneNumber);
+            ISubscriber targetSubscriber = _billingSystem.GetSubscriberBy(callInfo.TargetPhoneNumber);
             CallController.CallCommit(callInfo, _billingSystem);
+            subscriber.Port.CallResponce($"{targetSubscriber.FullName} droped the call...");
+
         }
 
         private void Port_OnCall(CallInfo callInfo)

@@ -15,7 +15,8 @@ namespace ATSCore
         ISubscriber GetSubscriberBy(int sourcePhoneNumber);
         double GetLimitCallDuraction(ISubscriber subscriber);
         void CommitCall(CallInfo callInfo);
-        IEnumerable<CallInfo> GetAllCallFrom(ISubscriber subscriber);
+        IEnumerable<CallInfo> GetAllCallsOrderedByDuraction(ISubscriber subscriber);
         IEnumerable<CallInfo> GetAllSubscriberInComingCalls(ISubscriber subscriber);
+        
     }
 }

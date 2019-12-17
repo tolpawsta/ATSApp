@@ -15,8 +15,9 @@ namespace ATS.Impl
         private IList<CallInfo> _calls;
         private IPort _port;
         private ITariffPlan _tariffPlan;
+        private IContract _contract;
+
         public int PhoneNumber => Contract.PhoneNumber;
-        public IContract Contract { get; set; }
         public string FirstName { get; }
         public string LastName { get; }
         public string FullName => new StringBuilder().Append(FirstName).Append(" ").Append(LastName).ToString();
@@ -31,7 +32,7 @@ namespace ATS.Impl
                 Terminal.Connect(_port);
             }
         }
-        public ITariffPlan TariffPlan { get => _tariffPlan; set { _tariffPlan = Contract.TariffPlan; } }
+        public ITariffPlan TariffPlan { get => _tariffPlan; set { _tariffPlan = value; } }
         public SubscriberState State { get; set; }
         public IEnumerable<CallInfo> GetAllCalls => _calls;
         public decimal AccountMoney
@@ -46,6 +47,7 @@ namespace ATS.Impl
                 }
             }
         }
+        public IContract Contract { get => _contract; set => _contract = value; }
         public Person()
         {
             _calls = new List<CallInfo>();
@@ -87,12 +89,22 @@ namespace ATS.Impl
 
         public void CommitCall(CallInfo callInfo)
         {
-            _calls.Add(callInfo);
-            if (callInfo.callType==CallType.OutGoing)
+
+            if (callInfo.callType == CallType.OutGoing)
             {
-                AccountMoney -= (decimal)callInfo.CallDuration * TariffPlan.CallCoastPerSec;
+                decimal _coast = (decimal)callInfo.CallDuration * TariffPlan.CallCoastPerSec;
+                AccountMoney -= _coast;
+                callInfo.Coast = _coast;
             }
-            
+
+            _calls.Add(callInfo);
+
+        }
+
+        public void SetContact(IContract contract)
+        {
+            _contract = contract;
+            _tariffPlan = Contract.TariffPlan;
         }
     }
 }

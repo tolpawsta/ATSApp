@@ -39,6 +39,7 @@ namespace ATSDemo
                     contractLife,
                     contractMTS });
             IAts ats = manager.GetAts(terminals, ports, billingSystem);
+
             ISubscriber johnSmith = ats.ConcludeContractWith(new Person("John", "Smith"));
             ISubscriber tomasAnderson = ats.ConcludeContractWith(new Person("Tomas", "Anderson"));
             ISubscriber pifiaOracle = ats.ConcludeContractWith(new Person("Pifia", "Oracle"));
@@ -48,41 +49,36 @@ namespace ATSDemo
             johnSmith.Call(37529);
             view.Show(LineSeparator);
             #endregion
-
             #region Add cash to the account
             view.Show("Add cash to the account");
             johnSmith.AccountMoney = CashToAccount;
             view.Show(LineSeparator);
             #endregion
-
             #region 2. on target number not enough funds in the account
             view.Show("2. on target number not enough funds in the account");
             johnSmith.Call(37529);
             view.Show(LineSeparator);
             #endregion
-
             #region Add cash to the accounts
             view.Show($"Add cash to the accounts ({tomasAnderson.FullName},{pifiaOracle.FullName})");
             tomasAnderson.AccountMoney = CashToAccount;
             pifiaOracle.AccountMoney = CashToAccount;
             view.Show(LineSeparator);
             #endregion
-
-            #region  Call allowed between johnSmith and pifiaOracle
+            #region 3. Call allowed between johnSmith and pifiaOracle
             view.Show($"3. Call allowed between {johnSmith.FullName} and {pifiaOracle.FullName}");
             johnSmith.Call(37529);
             pifiaOracle.Answer();
             // tomasAnderson call to pifiaOracle
             view.Show(LineSeparator);
             #endregion
-
             #region 4. tomasAnderson call to the pifiaOracle but pifiaOracle is busy
             view.Show($"4. {tomasAnderson.FullName} call to the {pifiaOracle.FullName}");
             tomasAnderson.Call(pifiaOracle);
             view.Show(LineSeparator);
             pifiaOracle.Reject();
+            view.Show(LineSeparator);
             #endregion
-
             #region 5. tomasAnderson call to the pifiaOracle second attempt (drop call)
             view.Show($"5. {tomasAnderson.FullName} call to the {pifiaOracle.FullName}");
             tomasAnderson.Call(pifiaOracle);
@@ -96,24 +92,26 @@ namespace ATSDemo
             tomasAnderson.Reject();
             view.Show(LineSeparator);
             #endregion
-
             #region 7. tomasAnderson call to the pifiaOracle third attempt (answer call again)
             view.Show($"7. {tomasAnderson.FullName} call to the {pifiaOracle.FullName}");
             tomasAnderson.Call(pifiaOracle);
             pifiaOracle.Answer();
             pifiaOracle.Reject();
             view.Show(LineSeparator);
-                     
+            #endregion
+            #region 
+            view.Show("Get subscriber by number ");
             view.Show(billingSystem.GetSubscriberBy(37429));
             view.Show(LineSeparator);
-
-            view.Show(billingSystem.GetAllCallFrom(pifiaOracle));
+            view.Show("Get all calls with subscriber");
+            view.Show(pifiaOracle);
+            view.Show(billingSystem.GetAllCallsOrderedByDuraction(pifiaOracle));
             view.Show(LineSeparator);
-
+            view.Show("Get all subscribers in coming call");
             view.Show(billingSystem.GetAllSubscriberInComingCalls(pifiaOracle));
             view.Show(LineSeparator);
-
-
+            #endregion
+            view.Stop();
         }
     }
 }
