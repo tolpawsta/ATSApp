@@ -28,9 +28,9 @@ namespace ATSCore
                 .AppendLine($"Source phone: {SourcePhoneNumber} ")
                 .AppendLine($"Target phone: {TargetPhoneNumber} ")
                 .AppendLine($"Date-time: {CallDateTime.ToString("d")} - {CallDateTime.ToString("t")}")
-                .AppendLine($"Call duraction: {CallDuration} ")
+                .AppendLine($"Call duraction: {CallDuration:f2} ")
                 .AppendLine($"Call type: {callType} ")
-                .AppendLine($"Coast: {Coast}")
+                .AppendLine($"Coast: {Coast:f2}")
                 .ToString();
                 
         }

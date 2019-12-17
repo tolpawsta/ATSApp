@@ -99,7 +99,7 @@ namespace ATSDemo
             pifiaOracle.Reject();
             view.Show(LineSeparator);
             #endregion
-            #region 
+            #region Billing system work
             view.Show("Get subscriber by number ");
             view.Show(billingSystem.GetSubscriberBy(37429));
             view.Show(LineSeparator);
