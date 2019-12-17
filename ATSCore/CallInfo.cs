@@ -24,10 +24,10 @@ namespace ATSCore
         public override string ToString()
         {
             return new StringBuilder()
-                .AppendLine($"Source phone: {SourcePhoneNumber}")
-                .AppendLine($"Target phone: {TargetPhoneNumber}")
-                .AppendLine($"Date-time: {CallDateTime.ToString("mm/dd/yyyy")} - {CallDateTime.ToString("hh:mm")}")
-                .AppendLine($"Call duraction: {CallDuration}")
+                .AppendLine($"Source phone: {SourcePhoneNumber} ")
+                .AppendLine($"Target phone: {TargetPhoneNumber} ")
+                .AppendLine($"Date-time: {CallDateTime.ToString("d")} - {CallDateTime.ToString("t")}")
+                .AppendLine($"Call duraction: {CallDuration} ")
                 .AppendLine($"Call type: {callType}")
                 .ToString();
                 

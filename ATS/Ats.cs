@@ -1,5 +1,6 @@
 ﻿using ATS.Impl;
 using ATSCore;
+using ATSCore.Controllers;
 using ATSCore.EntityStates;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,7 @@ namespace ATS
         }
         private void Port_OnReject(CallInfo callInfo)
         {
-            ISubscriber subscriber = _billingSystem.GetSubscriberBy(callInfo.SourcePhoneNumber);
-            ISubscriber targetSubscriber = _billingSystem.GetSubscriberBy(callInfo.TargetPhoneNumber);
+            _billingSystem.CommitCall(callInfo);
 
         }
 
@@ -68,24 +68,20 @@ namespace ATS
                 throw new NullReferenceException($"Subscriber with phoneNumber {callInfo.SourcePhoneNumber} not found!");
             if (targetSubscriber == null)
                 throw new NullReferenceException($"Subscriber with phoneNumber {callInfo.TargetPhoneNumber} not found!");
-            if (subscriber.subscriberState == SubscriberState.Blocked)
+            if (subscriber.State == SubscriberState.Blocked)
             {
                 subscriber.Port.CallResponce("Your phone number is bloked.");
                 return;
             }
-            if (targetSubscriber.subscriberState == SubscriberState.Blocked)
+            if (targetSubscriber.State == SubscriberState.Blocked)
             {
                 subscriber.Port.CallResponce("The subscriber you are calling is temporarily blocked.");
                 return;
             }
-            IPort targetPort = targetSubscriber.Terminal.Port;
-            if (targetPort.PortState== PortState.Busy)
+            if (CallController.CheckStatePortsSubscribers(subscriber,targetSubscriber))
             {
-                subscriber.Terminal.Port.CallResponce("The subscriber you are calling is busy.");
-            }
-            else if (targetPort.PortState == PortState.Disconnected)
-            {
-                subscriber.Terminal.Port.CallResponce("The subscribers terminal you are calling is off or offline.");
+                callInfo.LimitCallDuraction = _billingSystem.GetLimitCallDuraction(subscriber);
+                targetSubscriber.Port.InComingCall(callInfo);
             }
             
 

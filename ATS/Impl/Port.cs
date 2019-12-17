@@ -16,18 +16,19 @@ namespace ATS.Impl
         public event Action<CallInfo> OnDrop;
         public event Action<string> OnCallResponce;
 
-        public PortState PortState { get; set; }
+        public PortState State { get; set; }
         public int PhoneNumber { get; set; }
         public CallInfo CurrentCallInfo { get; set; }
 
         public Port()
         {
             
-            PortState = PortState.Disconnected;
+            State = PortState.Disconnected;
         }
         public void Coll(int targerPhoneNumber)
         {
             CurrentCallInfo = new CallInfo(PhoneNumber, targerPhoneNumber);
+            State = PortState.Busy;
             OnCall?.Invoke(CurrentCallInfo);
         }
         public void Reject(CallInfo callInfo)
@@ -38,10 +39,7 @@ namespace ATS.Impl
         {
             OnDrop?.Invoke(callInfo);
         }
-        public void ChangeState()
-        {
-            throw new NotImplementedException();
-        }
+       
        public void InComingCall(CallInfo callInfo)
         { CurrentCallInfo = callInfo;
             OnInComingCall?.Invoke(CurrentCallInfo);

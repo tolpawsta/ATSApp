@@ -4,6 +4,7 @@
     {
         Connected,
         Disconnected,
-        Busy
+        Busy,
+        Free
     }
 }

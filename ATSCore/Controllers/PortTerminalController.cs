@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATS.Impl
+namespace ATSCore.Controllers
 {
     public class PortTerminalController
     {

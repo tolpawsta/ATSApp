@@ -13,5 +13,7 @@ namespace ATSCore
         IEnumerable<ISubscriber> Subscribers { get; }
         IList<IContract> Contracts { get; set; }
         ISubscriber GetSubscriberBy(int sourcePhoneNumber);
+        double GetLimitCallDuraction(ISubscriber subscriber);
+        void CommitCall(CallInfo callInfo);
     }
 }

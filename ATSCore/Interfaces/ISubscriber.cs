@@ -16,17 +16,16 @@ namespace ATSCore
         IPort Port { get; set; }
         string FullName { get; }
         ITariffPlan TariffPlan { get; set; }
-        SubscriberState subscriberState { get; set; }
+        SubscriberState State { get; set; }
         IEnumerable<CallInfo> GetAllCalls { get; }
         IEnumerable<CallInfo> GetCallsBy(CallType callType);
         IEnumerable<CallInfo> GetCallsBy(int phoneNumber);
         decimal AccountMoney { get; set; }
         void Call(int phoneNumber);
+        void Call(ISubscriber subscriber);
         void Reject();
         void Answer();
         void Drop();
-
-
-
+        void CommitCall(CallInfo callInfo);
     }
 }

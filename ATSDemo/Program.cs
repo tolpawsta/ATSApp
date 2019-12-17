@@ -18,7 +18,7 @@ namespace ATSDemo
         {
 
             var manager = Configuration.GetManager(new DependencyManager());
-            ITariffPlan tariffPlan = manager.GetTariffPlan(20);
+            ITariffPlan tariffPlan = manager.GetTariffPlan(0.5m);
             IContract contractA1 = manager.GetContract(tariffPlan,phoneNumber: 37544);
             IContract contractMTS = manager.GetContract(tariffPlan,phoneNumber: 37529);
             IContract contractLife = manager.GetContract(tariffPlan,phoneNumber: 37525);
@@ -49,7 +49,8 @@ namespace ATSDemo
             tomasAnderson.AccountMoney = 10m;
             pifiaOracle.AccountMoney = 10m;
             johnSmith.Call(37529);
-
+            pifiaOracle.Answer();
+            tomasAnderson.Call(37529);
 
 
 

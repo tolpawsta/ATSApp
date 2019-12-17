@@ -16,11 +16,10 @@ namespace ATSCore
         event Action<CallInfo> OnInComingCall;
         event Action<CallInfo> OnDrop;
         event Action<string> OnCallResponce;
-        PortState PortState { get; set; }
+        PortState State { get; set; }
         void Coll(int targetPhoneNumber);
         void Reject(CallInfo callInfo);
         void Drop(CallInfo callInfo);
-        void ChangeState();
         void CallResponce(string message);
         void InComingCall(CallInfo callInfo);
     }

@@ -32,7 +32,7 @@ namespace ATS.Impl
             }
         }
         public ITariffPlan TariffPlan { get => _tariffPlan; set { _tariffPlan = Contract.TariffPlan; } }
-        public SubscriberState subscriberState { get; set; }
+        public SubscriberState State { get; set; }
         public IEnumerable<CallInfo> GetAllCalls => _calls;
         public decimal AccountMoney
         {
@@ -67,17 +67,32 @@ namespace ATS.Impl
         {
             Terminal.Call(phoneNumber);
         }
+        public void Call(ISubscriber subscriber)
+        {
+            Terminal.Call(subscriber.Port.PhoneNumber);
+        }
         public void Reject()
         {
             Terminal.Reject();
         }
         public void Answer()
         {
+
             Terminal.Answer();
         }
         public void Drop()
         {
             Terminal.Drop();
+        }
+
+        public void CommitCall(CallInfo callInfo)
+        {
+            _calls.Add(callInfo);
+            if (callInfo.callType==CallType.OutGoing)
+            {
+                AccountMoney -= (decimal)callInfo.CallDuration * TariffPlan.CallCoastPerSec;
+            }
+            
         }
     }
 }

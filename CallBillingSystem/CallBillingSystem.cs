@@ -29,7 +29,7 @@ namespace BillingSystem
         {
             ISubscriber subscriber = _subscribers.FirstOrDefault(s => s.Terminal.Port.PhoneNumber == sourcePhoneNumber);
             if (subscriber != null)
-                subscriber.subscriberState = (subscriber.AccountMoney == 0) ? SubscriberState.Blocked : SubscriberState.Allowed;
+                subscriber.State = (subscriber.AccountMoney == 0) ? SubscriberState.Blocked : SubscriberState.Allowed;
             return subscriber;
         }
 
@@ -38,6 +38,21 @@ namespace BillingSystem
             subscriber.Contract = Contracts.FirstOrDefault();
             Contracts.Remove(subscriber.Contract);
             _subscribers.Add(subscriber);
+        }
+
+        public double GetLimitCallDuraction(ISubscriber subscriber)
+        {
+            return Convert.ToDouble(subscriber.AccountMoney/subscriber.TariffPlan.CallCoastPerSec);
+        }
+
+        public void CommitCall(CallInfo callInfo)
+        {
+            ISubscriber subscriber = GetSubscriberBy(callInfo.SourcePhoneNumber);
+            ISubscriber targetSubscriber = GetSubscriberBy(callInfo.TargetPhoneNumber);
+            callInfo.callType = CallType.OutGoing;
+            subscriber.CommitCall(callInfo);
+            callInfo.callType = CallType.InComing;
+            targetSubscriber.CommitCall(callInfo);
         }
     }
 }

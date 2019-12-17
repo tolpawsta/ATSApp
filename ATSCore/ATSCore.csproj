@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallInfo.cs" />
+    <Compile Include="Controllers\CallController.cs" />
+    <Compile Include="Controllers\PortTerminalController.cs" />
     <Compile Include="EntityStates\CallType.cs" />
     <Compile Include="Interfaces\IClient.cs" />
     <Compile Include="Interfaces\Configuration.cs" />

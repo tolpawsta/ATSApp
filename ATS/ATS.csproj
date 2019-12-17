@@ -42,9 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ats.cs" />
-    <Compile Include="Impl\CallController.cs" />
     <Compile Include="Impl\Port.cs" />
-    <Compile Include="Impl\PortTerminalController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
