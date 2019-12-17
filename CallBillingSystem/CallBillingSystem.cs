@@ -13,7 +13,7 @@ namespace BillingSystem
     public class CallBillingSystem : IBilling
     {
         private IList<ISubscriber> _subscribers;
-        public IEnumerable<ISubscriber> Subscribers => _subscribers;
+        public IList<ISubscriber> Subscribers => _subscribers;
         public IList<IContract> Contracts { get; set; }
         public CallBillingSystem()
         {

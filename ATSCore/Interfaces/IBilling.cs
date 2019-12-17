@@ -10,7 +10,7 @@ namespace ATSCore
     public interface IBilling
     {
         void AddSubscriber(ISubscriber subscriber);
-        IEnumerable<ISubscriber> Subscribers { get; }
+        IList<ISubscriber> Subscribers { get; }
         IList<IContract> Contracts { get; set; }
         ISubscriber GetSubscriberBy(int sourcePhoneNumber);
         double GetLimitCallDuraction(ISubscriber subscriber);

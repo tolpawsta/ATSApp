@@ -95,5 +95,14 @@ namespace ATS
 
         }
 
+        public IClient BreakContractWith(ISubscriber subscriber)
+        {
+            _billingSystem.Contracts.Add(subscriber.Contract);
+            _billingSystem.Subscribers.Remove(subscriber);
+            StopPortListen(subscriber.Port);
+            terminals.Add(subscriber.Terminal);
+            ports.Add(subscriber.Port);
+            return (IClient)subscriber;
+        }
     }
 }

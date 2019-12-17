@@ -10,7 +10,7 @@ namespace ATSCore
     {
         //Dictionary<>
         ISubscriber ConcludeContractWith(IClient client);
-        
+        IClient BreakContractWith(ISubscriber subscriber);
         
 
     }
